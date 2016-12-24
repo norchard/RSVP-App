@@ -1,0 +1,22 @@
+<h2><%= event[:name] %></h2>
+<p>This event will be hosted by <%= event[:host] %> on <%= event[:date].strftime("%A %B %d, %Y") %> at <%= event[:address] %></p>
+<p><%= event[:description] %></p>
+
+<div id = 'reply'>
+
+  <% if guests.length > 0 %>
+    <% { 1 => 'Attending', 2 => 'Not Sure', 3 => 'Not Attending'}.each do |status, title| %>
+      <h3><%= title %></h3>
+      <ul>
+        <% if guests[status] %>
+          <% guests[status].each do |guest| %>
+           <li><%= guest[:name] %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+  <% else %>
+    <h3>No one has RSVP'ed yet!</h3>
+  <% end %>
+
+</div>

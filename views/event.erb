@@ -1,0 +1,24 @@
+<h2><%= event[:name] %></h2>
+<p>This event will be hosted by <%= event[:host] %> on <%= event[:date].strftime("%A %B %d, %Y") %> at <%= event[:address] %></p>
+<p><%= event[:description] %></p>
+
+<div id = 'reply'>
+
+  <h3>Can you make it?</h3>
+
+  <form action='/event/<%= event[:id] %>' method='POST'>
+    <label for="name">Name:</label>
+    <input type='text' name='name'/><br/>
+
+    <label for="email">Email:</label>
+    <input type="text" name='email'/><br/>
+
+    <div id = 'radio'>
+      <input type='radio' name='status' value=1> Yes, I'll be there!</br>
+      <input type='radio' name='status' value=2> Not sure yet.</br>
+      <input type='radio' name='status' value=3> Sorry, I can't make it.</br>
+    </div>
+
+    <input type='submit' value="RSVP"/>
+  </form>
+</div>

@@ -1,0 +1,88 @@
+body{
+  margin-top: 160px;
+  text-align: center;
+  color: #5EF38C;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1{
+  font-size: 140px;
+  font-weight: 800;
+  margin-bottom: 40px;
+  line-height: 120px;
+}
+
+h2{
+  font-size: 45px;
+}
+
+h3{
+  font-size: 30px;
+  margin: 0px;
+}
+
+li{
+  display: inline-block;
+}
+
+ul{
+  padding-left: 0px;
+}
+
+form{
+  color: #dee0e0;
+  width: 400px;
+  margin: auto;
+}
+
+label{
+  float: left;
+  font-size: 14px;
+  padding-top: 10px;
+}
+
+input[type=text], textarea, input[type=date] {
+    font-family: 'Source Sans Pro';
+    font-size: 16px;
+    width: 100%;
+    padding: 6px 12px;
+    margin: 3px 0;
+    box-sizing: border-box;
+    border: 2px solid #F7F9F9;
+    border-radius: 4px;
+}
+
+button, input[type=submit]{
+  margin-top: 40px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 800;
+  font-size: 15px;
+  border: 2px solid #ffffff;
+  color: #5EF38C;
+  background-color: #F7F9F9;
+  cursor: pointer;
+  border-radius: 30px;
+  padding: 15px 20px;
+}
+
+button:hover, input[type=submit]:hover{
+  border: 2px solid #dee0e0;
+}
+
+div#reply{
+  padding: 50px 0px;
+  width: 500px;
+  border: 2px solid #dee0e0;
+  margin: auto;
+}
+
+div#radio{
+  text-align: left;
+  font-size: 14px;
+  padding-top: 15px;
+}
+
+input[type=radio]{
+  margin-top: 10px;
+}
