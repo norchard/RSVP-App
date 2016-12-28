@@ -21,5 +21,3 @@ class CreateGuestsTable < ActiveRecord::Migration[5.0]
   end
 
 end
-
-CreateGuestsTable.migrate(ARGV[0])
