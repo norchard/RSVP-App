@@ -1,2 +1,2 @@
 require './app'
-run RsvpApp
+run Sinatra::RsvpApp

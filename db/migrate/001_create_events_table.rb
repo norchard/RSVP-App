@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative '../environment'
+require_relative '../../environment'
 
 class CreateEventsTable < ActiveRecord::Migration[5.0]
 
