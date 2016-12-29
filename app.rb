@@ -10,6 +10,10 @@ class RsvpApp < Sinatra::Base
     register Sinatra::Reloader
   end
 
+  configure :production do
+    require 'newrelic_rpm'
+  end
+
   # escapes html in <%= %>, but not in <%== %>
   set :erb, :escape_html => true
 
