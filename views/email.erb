@@ -1,0 +1,26 @@
+<table width="100%">
+  <tbody>
+    <tr>
+      <td align="center">
+
+        <table cellspacing="0" cellpadding="0" border="0" width="600">
+          <tbody>
+            <tr style="background-color: #5EF38C; color: #ffffff; text-align: center;">
+              <h3 style="letter-spacing:3px;">HIP HIP HOORAY!</h3>
+            </tr>
+            <tr>
+              <h1 style="color: #5EF38C;">Hello <%= params[:host] %>!</h1>
+              <p>Thanks for creating an event!</p>
+              <p>Send this link to your guests so that they can RSVP: <%= request.base_url %>/event/<%= event[:id] %></p>
+            </tr>
+            <tr>
+              <p>Sincerely,</p>
+              <p>The RSVP Team</p>
+            </tr>
+          </tbody>
+        </table>
+
+      </td>
+    </tr>
+  </tbody>
+</table>

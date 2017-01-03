@@ -31,9 +31,15 @@ class RsvpApp < Sinatra::Base
       host: params[:host],
       address: params[:address],
       description: params[:description],
+      email: params[:email],
       date: params[:date]
     )
     event.save!
+
+    Pony.mail(:to => params[:email],
+              :from => 'rsvp@example.com',
+              :subject => 'Thanks for creating an event!',
+              :html_body => erb(:email, locals: {event: event}))
 
     redirect to("/event/#{event[:id]}/manage")
   end
