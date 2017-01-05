@@ -1,3 +1,7 @@
+<% if event[:image] %>
+<img src="<%= event[:image] %>" alt="image" height="100" width="100">
+<% end %>
+
 <h2><%= event[:name] %></h2>
 <p>This event will be hosted by <%= event[:host] %> on <%= event[:date].strftime("%A %B %d, %Y") %> at <%= event[:address] %></p>
 <p><%= event[:description] %></p>

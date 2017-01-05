@@ -1,7 +1,7 @@
     <h2>Create an Event</h2>
     <p>Let's get this party started.</p>
 
-    <form action='/create' method='POST'>
+    <form action='/create' method='POST' enctype='multipart/form-data'>
       <label for="name">Name:</label>
       <input type='text' name='name'/><br/>
 
@@ -16,6 +16,9 @@
 
       <label for="address">Address:</label>
       <input type='text' name='address'/><br/>
+
+      <label for="image">Image:</label>
+      <input type="file" name="image"><br/><br/>
 
       <label for="description">Description:</label>
       <textarea name='description'></textarea><br/>

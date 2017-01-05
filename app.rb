@@ -4,6 +4,10 @@ require "sinatra/reloader" if development?
 require_relative 'environment'
 require_relative 'models'
 require 'erubis'
+require 'aws-sdk'
+require 'dotenv'
+require 'securerandom'
+Dotenv.load
 
 class RsvpApp < Sinatra::Base
   configure :development do
@@ -26,13 +30,29 @@ class RsvpApp < Sinatra::Base
   end
 
   post '/create' do
+
+    if params[:image]
+      # Find image file extension
+      params[:image][:filename] =~ (/\.(png|jpeg|jpg|gif)$/i)
+      filename = "#{SecureRandom.hex}.#{$1}"
+
+      Thread.new do
+        s3 = Aws::S3::Resource.new(region:'us-east-1')
+        obj = s3.bucket(ENV['S3_BUCKET']).object(filename)
+        obj.upload_file(params[:image][:tempfile].path)
+      end
+
+      image_url = "https://#{ENV['S3_BUCKET']}.s3.amazonaws.com/#{filename}"
+    end
+
     event = Event.new(
       name: params[:name],
       host: params[:host],
       address: params[:address],
       description: params[:description],
       email: params[:email],
-      date: params[:date]
+      date: params[:date],
+      image: image_url
     )
     event.save!
 
