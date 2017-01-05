@@ -2,15 +2,21 @@ source 'https://rubygems.org'
 ruby '2.3.3'
 
 gem 'sinatra', require: 'sinatra/base'
-gem 'sinatra-contrib', require: 'sinatra/reloader'
-gem 'json'
+gem 'sinatra-activerecord'
 gem 'activerecord'
-gem "sinatra-activerecord"
+gem 'json'
 gem 'pg'
-gem 'rspec'
 gem 'erubis'
-gem 'newrelic_rpm'
 gem 'pony'
 gem 'rake'
-gem 'dotenv'
 gem 'aws-sdk'
+
+group :development do
+  gem 'sinatra-contrib', require: 'sinatra/reloader'
+  gem 'rspec'
+  gem 'dotenv'
+end
+
+group :production do
+  gem 'newrelic_rpm'
+end

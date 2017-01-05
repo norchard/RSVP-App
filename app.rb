@@ -1,17 +1,18 @@
 # app.rb
 require 'sinatra'
-require "sinatra/reloader" if development?
-require_relative 'environment'
-require_relative 'models'
 require 'erubis'
 require 'aws-sdk'
-require 'dotenv'
 require 'securerandom'
-Dotenv.load
+
+require_relative 'environment'
+require_relative 'models'
 
 class RsvpApp < Sinatra::Base
   configure :development do
+    require 'sinatra/reloader'
     register Sinatra::Reloader
+    require 'dotenv'
+    Dotenv.load
   end
 
   configure :production do
@@ -32,10 +33,11 @@ class RsvpApp < Sinatra::Base
   post '/create' do
 
     if params[:image]
-      # Find image file extension
+      # Generate unique image name to prevent collisions / enumeration
       params[:image][:filename] =~ (/\.(png|jpeg|jpg|gif)$/i)
       filename = "#{SecureRandom.hex}.#{$1}"
 
+      # Create new thread to asynchronously upload image to S3
       Thread.new do
         s3 = Aws::S3::Resource.new(region:'us-east-1')
         obj = s3.bucket(ENV['S3_BUCKET']).object(filename)

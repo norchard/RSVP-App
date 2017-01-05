@@ -1,13 +1,6 @@
-#environment.rb
 require 'active_record'
 require 'sinatra/activerecord'
 require 'pony'
-
-
-# ActiveRecord::Base.establish_connection(
-#   :adapter => 'postgresql',
-#   :database =>  'rsvp'
-# )
 
 db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/rsvp')
 
@@ -31,6 +24,6 @@ configure :production do
       :password => ENV['SENDGRID_PASSWORD'],
       :authentication => :plain,
       :enable_starttls_auto => true
-    },
+    }
   }
 end
